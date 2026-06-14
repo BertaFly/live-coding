@@ -3,9 +3,15 @@
  * @param {number} k
  * @return {void} Do not return anything, modify nums in-place instead.
  */
+
+function isPowerOf(n, base) {
+  const exp = Math.log(n) / Math.log(base);
+  return Number.isInteger(Math.round(exp * 1e10) / 1e10); // round to dodge float errors
+}
+
 var rotate = function(nums, k) {
     if (nums.length === 1) return;
-    if (nums.length % k === 0) return;
+    if (k > 1 && isPowerOf(k, nums.length)) return;
     while(k > 0) {
         const tail = nums.pop();
         nums.unshift(tail);
@@ -22,4 +28,4 @@ console.log(nums); //
 
 // input [1,2]
 // [2, 1]
-console.log(rotate([1,2,3,4,5], 11)); //
+console.log(rotate([1,2], 1)); //
