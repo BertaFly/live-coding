@@ -12,13 +12,10 @@ function isPowerOf(n, base) {
 var rotate = function(nums, k) {
     if (nums.length === 1) return;
     if (k > 1 && isPowerOf(k, nums.length)) return;
-    let modifiedK = k > nums.length ? k % nums.length : k;
-    while(k > 0) {
-        const tail = nums.pop();
-        nums.unshift(tail);
-        k--;
-    }
-console.log(nums); //
+    const modifiedK = k > nums.length ? k % nums.length : k;
+    const tail = nums.splice(-modifiedK);
+    nums.unshift(...tail);
+    console.log(nums); //
 };
 
 // Input: nums = [1,2,3,4,5,6,7], k = 3
