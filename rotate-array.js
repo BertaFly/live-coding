@@ -4,8 +4,13 @@
  * @return {void} Do not return anything, modify nums in-place instead.
  */
 var rotate = function(nums, k) {
-    const tail = nums.splice(-k);
-    nums.unshift(...tail);
+    if (nums.length === 1) return;
+    if (nums.length % k === 0) return;
+    while(k > 0) {
+        const tail = nums.pop();
+        nums.unshift(tail);
+        k--;
+    }
 console.log(nums); //
 };
 
@@ -17,4 +22,4 @@ console.log(nums); //
 
 // input [1,2]
 // [2, 1]
-console.log(rotate([1,2], 7)); //
+console.log(rotate([1,2,3,4,5], 11)); //
