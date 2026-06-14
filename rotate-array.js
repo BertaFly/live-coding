@@ -15,7 +15,6 @@ var rotate = function(nums, k) {
     const modifiedK = k > nums.length ? k % nums.length : k;
     const tail = nums.splice(-modifiedK);
     nums.unshift(...tail);
-    console.log(nums); //
 };
 
 // Input: nums = [1,2,3,4,5,6,7], k = 3
@@ -26,4 +25,11 @@ var rotate = function(nums, k) {
 
 // input [1,2]
 // [2, 1]
-console.log(rotate([1,2,3,4,5], 11)); //
+console.log(rotate([-1,-100,3,99], 2)); //
+// i = 0;
+// toMemo = nums[i];
+// nums[i] = nums[k]
+// nums[k] = toMemo;
+// [3, -100, -1, 99]
+// i++;
+// k--;
